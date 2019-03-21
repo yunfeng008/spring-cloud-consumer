@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    config:
+      name: dzp-config
+      profile: dev
+      label: master
+      discovery:
+        enabled: true
+        serviceId: spring-cloud-config-server
+    bus:
+      trace:
+        enabled: true                                       #跟踪总线事件
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: root
+        password: root
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
+
+#注册中心配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
